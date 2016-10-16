@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-	return send_file('photo.jpg')
+	return render_template('index.html', name="",)
 
 @app.route('/onClick', methods=['POST'])
 def test():
@@ -49,7 +49,7 @@ def test():
 
 @app.route('/photo.jpg')
 def returnPic():
-	return render_template("photo.jpg")
+	return send_file('photo.jpg')
 
 @app.route('/onClick1', methods=['POST'])
 def save_uploaded_file ():
