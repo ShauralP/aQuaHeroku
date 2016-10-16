@@ -1,6 +1,6 @@
 #from app import app
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from werkzeug import secure_filename
 #from __future__ import print_function
 import time
@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-	return render_template('index.html', name="",)
+	return send_file('photo.jpg')
 
 @app.route('/onClick', methods=['POST'])
 def test():
