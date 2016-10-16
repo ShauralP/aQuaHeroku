@@ -21,7 +21,7 @@ def test():
 	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
 	link = request.form['link']
 	params = urllib.urlencode({'visualFeatures': 'Tags'})
-	conn = httplib.HTTPSConnection('api.projectoxford.ai')
+	conn = httplib.HTTPSConnection('https://api.projectoxford.ai')
 	conn.request("POST", "/vision/v1.0/analyze?%s" % params, "{'url':'"+link+"'}", headers)
 	response = conn.getresponse()
 	data = response.read()
