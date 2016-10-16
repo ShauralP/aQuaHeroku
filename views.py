@@ -35,7 +35,7 @@ def test():
 	json_data = json.loads(data)
 
 	names = [r['name'] for r in json_data['tags']]
-	words_you_dont_want = ['flower', 'plant']
+	words_you_dont_want = ['flower', 'plant', 'indoor', 'tree', 'outdoor', 'snack food', 'food', 'crazy', 'water', 'several']
 	name = ''
 	for n in names:
 		if n not in words_you_dont_want:
