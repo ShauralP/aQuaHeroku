@@ -53,8 +53,6 @@ def save_uploaded_file ():
 		f = request.files['photo']
 		f.save(secure_filename('photo.jpg'))
 
-		return 'This fucking worked!'
-
 	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
 	link = "https://aquaflora.herokuapp.com/photo.jpg"
 	params = urllib.urlencode({'visualFeatures': 'Tags'})
@@ -73,7 +71,7 @@ def save_uploaded_file ():
 	if name == '':
 		name = names[0].title()
 	ftemp = ''
-	#print(data)
+	print(name)
 	conn.close()
 	url = "https://api.darksky.net/forecast/209bb716d364854504482e794db7bad8/37.8267,-122.4233"
 	resp = requests.get(url)
