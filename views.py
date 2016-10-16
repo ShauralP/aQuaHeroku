@@ -19,8 +19,13 @@ def index():
 
 @app.route('/onClick', methods=['POST'])
 def test():
-	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
+	address = request.form['address']
 	link = request.form['link']
+	if address == "" or link == "":
+		return render_template("index.html", name="Please enter link above")
+
+	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
+	
 	print(link)
 	params = urllib.urlencode({'visualFeatures': 'Tags'})
 	conn = httplib.HTTPSConnection('api.projectoxford.ai')
@@ -28,20 +33,20 @@ def test():
 	response = conn.getresponse()
 	data = response.read()
 	json_data = json.loads(data)
+
 	names = [r['name'] for r in json_data['tags']]
 	words_you_dont_want = ['flower', 'plant']
 	name = ''
 	for n in names:
 		if n not in words_you_dont_want:
 			name += "%s " % n.title()
-
 	if name == '':
 		name = names[0].title()
 	ftemp = ''
 	#print(data)
 	conn.close()
 	formatSt = ""
-	address = request.form['address']
+	
 	g = geocoder.google("address")
 	ll = g.latlng
 	formatSt = str(ll[0]) + "," + str(ll[1])
@@ -73,6 +78,9 @@ def test():
 		ans = "Water your plants."
 	return render_template("index.html", name=name, location=address, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
 
+@app.errorhandler(500)
+def refresh(e):
+	return render_template("index.html", name="Please enter link above"), 500
 # @app.route('/photo.jpg')
 # def returnPic():
 # 	return send_file('photo.jpg')
