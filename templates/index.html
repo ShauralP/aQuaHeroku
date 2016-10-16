@@ -24,8 +24,8 @@
 							<li><a href="#intro">Home</a></li>
 							<li><a href="#one">Image Detect</a></li>
 							<li><a href="#two">Data</a></li>
-							<li><a href="#work">About Us</a></li>
-							<li><a href="#contact">Contact Us</a></li>
+							<li><a href="#work">About Us</a></li><!-- 
+							<li><a href="#contact">Contact Us</a></li> -->
 						</ul>
 					</nav>
 
@@ -71,8 +71,8 @@
 						<h2>Data</h2>
 					</header>
 					<p><ul>
-							<li>
-							Name: {{name}}</li>
+							<li>Name: <a href="https://en.wikipedia.org/wiki/{{name}}" target="_blank" style="background-color: white; color: Red;">
+							{{name}}</a></li>
 							<li>Rain probability today: {{prob}}</li>
 							<li>Humidity % today: {{humidity}}</li>
 							<li>Temp today: {{temperature}}</li>
@@ -121,10 +121,10 @@
 					</header>
 					<div class="box container 75%">
 
-					<!-- Contact Form -->
-							<form method="post" action="#">
+					 <!--Contact Form--> 
+							<form action="#" method="post">
 								<div class="row 50%">
-									<div class="6u 12u(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u 12u(mobile)"><input type="text" id="nameTxt" name="name" placeholder="Name" /></div>
 									<div class="6u 12u(mobile)"><input type="email" name="email" placeholder="Email" /></div>
 								</div>
 								<div class="row 50%">
@@ -133,7 +133,7 @@
 								<div class="row">
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" value="Send Message" /></li>
+											<li><input type="submit" value="Send Message" onclick="nameTxt.value="Hello Wo!"" /></li>
 										</ul>
 									</div>
 								</div>
@@ -142,6 +142,41 @@
 					</div>
 				</div>
 			</section>
+
+<!-- 			<div class="contact" id="contact">
+        <div class="wrap">
+            <h3>CONTACT US</h3>
+            <p class="a">Free Estimates</p>
+            <div class="form">
+                 <div class="form-text">
+                 <form method='post' action="../mailform.php">
+                    <input type="text" class="textbox" value="Your Name*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+                    <input type="text" class="textbox" value="Your E-mail*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
+                    <input name="PNumber" type="text" class="Subject" value="Phone Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Website';}">
+                </div>
+                     <textarea name='mytextarea' placeholder="Your Message*"></textarea>
+                     <div class="clear"> </div>
+                     <input type="submit" value="SEND MESSAGE">                  
+             </div>
+     </div>
+     </div>
+<?php
+     $to      = 'contact@qixty.com';
+	$subject = 'New Request from Website';
+	$message = $_POST['mytextarea'];
+	$headers = 'From: webmaster@qixty.com' . "\r\n" .
+	'Reply-To: contact@qixty.com' . "\r\n" .
+	'X-Mailer: PHP/' . phpversion();
+
+$send = mail($to, $subject, $message, $headers);
+
+// this will help you to get the status mail sent or not
+if($send) :
+   echo "Email sent";
+else :
+    echo "Email sending failed";
+endif;
+?> -->
 
 		<!-- Footer -->
 			<footer id="footer">

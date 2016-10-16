@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-	return render_template('index.html', name="",)
+	return render_template('index.html', name="Please enter link above.",)
 
 @app.route('/onClick', methods=['POST'])
 def test():
