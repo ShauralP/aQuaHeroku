@@ -47,6 +47,10 @@ def test():
 		ans = "Yes"
 	return render_template("index.html", name=name, water=ans, prob=prob)
 
+@app.route('/photo.jpg')
+def returnPic():
+	return render_template("photo.jpg")
+
 @app.route('/onClick1', methods=['POST'])
 def save_uploaded_file ():
 	if request.method == 'POST':
