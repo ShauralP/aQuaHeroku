@@ -39,16 +39,32 @@ def test():
 	ftemp = ''
 	#print(data)
 	conn.close()
-	url = "https://api.darksky.net/forecast/209bb716d364854504482e794db7bad8/37.8267,-122.4233"
+	url = "https://api.darksky.net/forecast/209bb716d364854504482e794db7bad8/40.4259,86.9081"
 	resp = requests.get(url)
 	data1 = resp.json()
 	prob = data1['daily']['data'][0]['precipProbability']
 	humidity = data1['daily']['data'][0]['humidity']
-	if prob > 0.75:
-		ans = "No"
+	temperature = data1['daily']['data'][0]['temperatureMax']
+	wind = data1['daily']['data'][0]['windSpeed']
+	if prob > 0.75 and humidity < 0.50 and temperature < 50 and wind < 5:
+		ans = "No need to water your plants."
+	elif prob > 0.75 and humidity > 0.50 and temperature < 50 and wind < 5:
+		ans = "Water your plants a little."
+	elif prob > 0.75 and humidity > 0.50 and temperature > 78 and wind < 5:
+		ans = "Water your plants a lot."
+	elif prob > 0.75 and humidity > 0.50 and temperature > 78 and wind > 9:
+		ans = "Water your plants a lot!"
+	elif prob < 0.75 and humidity > 0.50 and temperature > 78 and wind > 9:
+		ans = "Water your plants a lot."
+	elif prob < 0.75 and humidity < 0.50 and temperature > 78 and wind > 9:
+		ans = "Water your plants a little."
+	elif prob < 0.75 and humidity < 0.50 and temperature < 50 and wind > 9:
+		ans = "No need to water your plants."
+	elif prob < 0.75 and humidity < 0.50 and temperature < 50 and wind < 5:
+		ans = "No need to water your plants."
 	else:
-		ans = "Yes"
-	return render_template("index.html", name=name, prob=prob, water=ans, humidity=humidity)
+		ans = "Water your plants."
+	return render_template("index.html", name=name, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
 
 # @app.route('/photo.jpg')
 # def returnPic():
