@@ -59,24 +59,24 @@ def test():
 	temperature = data1['daily']['data'][0]['temperatureMax']
 	wind = data1['daily']['data'][0]['windSpeed']
 	if prob > 0.75 and humidity < 0.50 and temperature < 50 and wind < 5:
-		ans = "No need to water your plants."
+		ans = "No need to water your plants this week."
 	elif prob > 0.75 and humidity > 0.50 and temperature < 50 and wind < 5:
-		ans = "Water your plants a little."
+		ans = "Water your plants a little this week."
 	elif prob > 0.75 and humidity > 0.50 and temperature > 78 and wind < 5:
-		ans = "Water your plants a lot."
+		ans = "Water your plants a lot this week."
 	elif prob > 0.75 and humidity > 0.50 and temperature > 78 and wind > 9:
-		ans = "Water your plants a lot!"
+		ans = "Water your plants a lot this week!"
 	elif prob < 0.75 and humidity > 0.50 and temperature > 78 and wind > 9:
-		ans = "Water your plants a lot."
+		ans = "Water your plants a lot this week."
 	elif prob < 0.75 and humidity < 0.50 and temperature > 78 and wind > 9:
-		ans = "Water your plants a little."
+		ans = "Water your plants a little this week."
 	elif prob < 0.75 and humidity < 0.50 and temperature < 50 and wind > 9:
-		ans = "No need to water your plants."
+		ans = "No need to water your plants this week."
 	elif prob < 0.75 and humidity < 0.50 and temperature < 50 and wind < 5:
-		ans = "No need to water your plants."
+		ans = "No need to water your plants this week."
 	else:
-		ans = "Water your plants."
-	return render_template("index.html", name=name, location=address, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
+		ans = "Water your plants this week."
+	return render_template("index.html", link=link, name=name, location=address, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
 
 @app.errorhandler(500)
 def refresh(e):

@@ -16,7 +16,7 @@
 			<header id="header">
 
 				<!-- Logo -->
-					<h1 id="logo">aQuaFlora<img src="{{url_for('static', filename='images/aQuaFlora.png')}}" width="50" height="50" ></h1>
+					<h1 id="logo">aQuaFlora</h1>
 
 				<!-- Nav -->
 					<nav id="nav">
@@ -75,13 +75,16 @@
 							<li>Name: <a href="https://en.wikipedia.org/wiki/{{name}}" target="_blank" style="background-color: white; color: Red;">
 							{{name}}</a></li>
 							<li>Location: {{location}}</li>
-							<li>Rain probability today: {{prob}}</li>
-							<li>Humidity % today: {{humidity}}</li>
-							<li>Temp today: {{temperature}}</li>
-							<li>Wind today: {{wind}}</li>
-							<li style="background-color: white; color: Red;">{{water}}</li>
+							<li>Rain probability: {{prob}}</li>
+							<li>Humidity: {{humidity}}</li>
+							<li>Average Temp: {{temperature}}&deg;F</li>
+							<li>Average Wind Speed: {{wind}}m/hr</li>
+							<li style="background-color: white; color: Blue;">{{water}}</li>
 						</ul></p>
+<div align="right" style=""><img src="{{link}}" width="200" height="200"></div>
 				</div>
+				
+
 				<a href="#work" class="button style2 down anchored">Next</a>
 			</section>
 
@@ -90,9 +93,7 @@
 				<div class="content container">
 					<header>
 						<h2>About Us</h2>
-						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+						<p>Couple of freshmen trying to do some cool stuff at a hackathon.</p>
 					</header>
 
 					<!-- Lightbox Gallery  -->
@@ -102,11 +103,11 @@
 								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/Bobby.jpg')}}" class="image fit from-right"><img src="{{url_for('static', filename='images/thumbs/Bobby.jpg')}}" title="Varun Gupta" alt="" /></a></div>
 							</div>
 							<div class="row 0% images">
-								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/Darpan.jpg')}}" class="image fit from-left"><img src="{{url_for('static', filename='images/thumbs/Darpan.jpg')}}" title="Darpan Tanna" alt="" /></a></div>
+								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/Conner.jpg')}}" class="image fit from-left"><img src="{{url_for('static', filename='images/thumbs/Conner.jpg')}}" title="Conner Todd" alt="" /></a></div>
 								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/Ishan.jpg')}}" class="image fit from-right"><img src="{{url_for('static', filename='images/thumbs/Ishan.jpg')}}" title="Ishan Kaul" alt="" /></a></div>
 							</div>
 							<div class="row 0% images">
-								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/05.jpg')}}" class="image fit from-left"><img src="{{url_for('static', filename='images/thumbs/05.jpg')}}" title="Conner Todd" alt="" /></a></div>
+								<div class="6u 12u(mobile)"><a href="{{url_for('static', filename='images/fulls/Darpan.jpg')}}" class="image fit from-left"><img src="{{url_for('static', filename='images/thumbs/Darpan.jpg')}}" title="Darpan Tanna" alt="" /></a></div>
 								<!--<div class="6u 12u(mobile)"><a href="images/fulls/06.jpg" class="image fit from-right"><img src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a></div>-->
 							</div>
 						</div>
