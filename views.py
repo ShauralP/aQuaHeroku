@@ -1,5 +1,5 @@
 #from app import app
-from flask import render_template, request
+from flask import Flask, render_template, request
 from werkzeug import secure_filename
 #from __future__ import print_function
 import time
