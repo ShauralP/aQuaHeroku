@@ -51,12 +51,12 @@ def test():
 def save_uploaded_file ():
 	if request.method == 'POST':
 		f = request.files['photo']
-		f.save(secure_filename(f.filename))
+		f.save(secure_filename('photo.jpg'))
 
 		return 'This fucking worked!'
 
 	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
-	link = outpath
+	link = "https://aquaflora.herokuapp.com/photo.jpg"
 	params = urllib.urlencode({'visualFeatures': 'Tags'})
 	conn = httplib.HTTPSConnection('api.projectoxford.ai')
 	conn.request("POST", "/vision/v1.0/analyze?%s" % params, "{'url':'"+link+"'}", headers)
