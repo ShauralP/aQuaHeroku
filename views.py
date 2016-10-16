@@ -1,4 +1,4 @@
-from app import app
+#from app import app
 from flask import render_template, request
 from werkzeug import secure_filename
 #from __future__ import print_function
