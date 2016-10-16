@@ -21,7 +21,7 @@ def test():
 	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
 	link = request.form['link']
 	params = urllib.urlencode({'visualFeatures': 'Tags'})
-	conn = httplib.HTTPSConnection('https://api.projectoxford.ai')
+	conn = httplib.HTTPSConnection('api.projectoxford.ai')
 	conn.request("POST", "/vision/v1.0/analyze?%s" % params, "{'url':'"+link+"'}", headers)
 	response = conn.getresponse()
 	data = response.read()
@@ -52,13 +52,13 @@ def test():
 def returnPic():
 	return send_file('photo.jpg')
 
-@app.route('/onClick1', methods=['POST'])
-def save_uploaded_file ():
-	if request.method == 'POST':
-		f = request.files['photo']
-		f.save("photo.jpg")
+# @app.route('/onClick1', methods=['POST'])
+# def save_uploaded_file ():
+# 	if request.method == 'POST':
+# 		f = request.files['photo']
+# 		f.save("photo.jpg")
 
-	# headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
+# 	# headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
 	# link = "https://aquaflora.herokuapp.com/photo.jpg"
 	# params = urllib.urlencode({'visualFeatures': 'Tags'})
 	# conn = httplib.HTTPSConnection('https://api.projectoxford.ai')
@@ -87,7 +87,8 @@ def save_uploaded_file ():
 	# else:
 	# 	ans = "Yes"
 	return render_template("index.html")
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+	
+app.run()
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 5000))
+#     app.run(host='0.0.0.0', port=port)
