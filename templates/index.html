@@ -57,6 +57,7 @@
 					<input type="submit" value="Detect Image">
 					</form>-->
 					<form method="POST" action="/onClick">
+					<input type="text" name="address" placeholder="location">
 					<input type="text" name="link" placeholder="Link">
 					<input type="submit" value="Detect Image">
 					</form></p>
@@ -73,11 +74,12 @@
 					<p><ul>
 							<li>Name: <a href="https://en.wikipedia.org/wiki/{{name}}" target="_blank" style="background-color: white; color: Red;">
 							{{name}}</a></li>
+							<li>Location: {{location}}</li>
 							<li>Rain probability today: {{prob}}</li>
 							<li>Humidity % today: {{humidity}}</li>
 							<li>Temp today: {{temperature}}</li>
 							<li>Wind today: {{wind}}</li>
-							<li>{{water}}</li>
+							<li style="background-color: white; color: Red;">{{water}}</li>
 						</ul></p>
 				</div>
 				<a href="#work" class="button style2 down anchored">Next</a>

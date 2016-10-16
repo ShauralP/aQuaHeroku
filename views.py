@@ -7,6 +7,7 @@ import time
 import requests
 import httplib, urllib, base64
 import json
+import geocoder
 
 app = Flask(__name__)
 
@@ -39,7 +40,13 @@ def test():
 	ftemp = ''
 	#print(data)
 	conn.close()
-	url = "https://api.darksky.net/forecast/209bb716d364854504482e794db7bad8/40.4259,86.9081"
+	formatSt = ""
+	address = request.form['address']
+	g = geocoder.google("address")
+	ll = g.latlng
+	formatSt = str(ll[0]) + "," + str(ll[1])
+
+	url = "https://api.darksky.net/forecast/209bb716d364854504482e794db7bad8/"+formatSt+""
 	resp = requests.get(url)
 	data1 = resp.json()
 	prob = data1['daily']['data'][0]['precipProbability']
@@ -64,7 +71,7 @@ def test():
 		ans = "No need to water your plants."
 	else:
 		ans = "Water your plants."
-	return render_template("index.html", name=name, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
+	return render_template("index.html", name=name, location=address, prob=prob, water=ans, humidity=humidity, temperature=temperature, wind=wind)
 
 # @app.route('/photo.jpg')
 # def returnPic():
