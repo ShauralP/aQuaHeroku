@@ -51,7 +51,8 @@ def test():
 def save_uploaded_file ():
 	if request.method == 'POST':
 		f = request.files['photo']
-		f.save(secure_filename('photo.jpg'))
+		f.save("photo.jpg")
+		print("hi")
 
 	headers = {'Content-Type': 'application/json','Ocp-Apim-Subscription-Key': 'a2219199d5834848a8e0546e2645a870'}
 	link = "https://aquaflora.herokuapp.com/photo.jpg"
